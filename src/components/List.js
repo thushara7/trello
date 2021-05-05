@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./card";
 
-const value = {
-  title: "card",
-  desc: "this is the card description"
-};
-export default function Products() {
+export default function List({ name }) {
   const [list, setList] = useState([]);
   const [error, setError] = useState("");
   const [showForm, setShowForm] = useState(false);
@@ -14,7 +10,7 @@ export default function Products() {
   const [desc, setDesc] = useState("");
   const [counter, setCounter] = useState(-1);
 
-  function handleAddProducts(e) {
+  function handleAddLists(e) {
     let errorText = "";
     let showStatus = false;
     if (list.length > 4) {
@@ -28,7 +24,7 @@ export default function Products() {
     setShowForm(showStatus);
   }
 
-  function AddProducts(cardContent) {
+  function AddLists(cardContent) {
     setList([...list, cardContent]);
   }
   function handleClearAll(e) {
@@ -44,7 +40,7 @@ export default function Products() {
     setDesc(e.target.value);
   }
   function handleSave(e) {
-    AddProducts({ title, desc, id: counter + 1 });
+    AddLists({ title, desc, id: counter + 1 });
     setCounter(counter + 1);
     setShowForm(false);
     setTitle("");
@@ -58,10 +54,10 @@ export default function Products() {
   return (
     <div className="card">
       <div className="cardHeader">
-        Products{" "}
-        <button className="addButton" onClick={handleAddProducts}>
+        {name}{" "}
+        <button className="addButton" onClick={handleAddLists}>
           {" "}
-          Add Product
+          Add {name}
         </button>
         <span
           style={{
@@ -102,7 +98,7 @@ export default function Products() {
               className="saveButton"
               onClick={handleSave}
             >
-              Save Product
+              Save {name}
             </button>
             <button className="saveButton" onClick={() => setShowForm(false)}>
               Cancel
@@ -121,7 +117,7 @@ export default function Products() {
           />
         ))
       ) : (
-        <p> Start by adding Products</p>
+        <p> Start by adding {name}</p>
       )}
     </div>
   );

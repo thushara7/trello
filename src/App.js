@@ -1,14 +1,13 @@
 import "./App.css";
 import Header from "./components/Header";
-import TeamList from "./components/TeamList";
-import ProductList from "./components/Products";
+import List from "./components/List";
 function App() {
   return (
     <div className="App">
       <Header />
       <div className="List">
-        <TeamList />
-        <ProductList />
+        <List name="Teams" />
+        <List name="Products" />
       </div>
     </div>
   );
