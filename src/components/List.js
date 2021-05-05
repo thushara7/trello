@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import Card from "./card";
 
 export default function List({ name }) {
-  const [list, setList] = useState([]);
+  const localStorageKey = name;
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem(localStorageKey) || "[]")
+  );
   const [error, setError] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [cardItem, setCardItem] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [counter, setCounter] = useState(-1);
-
+  useEffect(() => {
+    localStorage.setItem(localStorageKey, JSON.stringify(list));
+  }, [list]);
   function handleAddLists(e) {
     let errorText = "";
     let showStatus = false;
