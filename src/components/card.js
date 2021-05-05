@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function card({ id, cardItem, deleteItem }) {
-  console.log(cardItem);
   return (
     <div>
       {cardItem && (

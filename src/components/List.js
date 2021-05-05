@@ -2,19 +2,23 @@ import React, { useState, useEffect } from "react";
 import Card from "./card";
 
 export default function List({ name, handleDeleteEntireLists }) {
+  //states
   const localStorageKey = name;
   const [list, setList] = useState(
     JSON.parse(localStorage.getItem(localStorageKey) || "[]")
   );
   const [error, setError] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const [cardItem, setCardItem] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [counter, setCounter] = useState(-1);
+
+  //effects
   useEffect(() => {
     localStorage.setItem(localStorageKey, JSON.stringify(list));
   }, [list]);
+
+  //handler: add new list item logic
   function handleAddLists(e) {
     let errorText = "";
     let showStatus = false;
@@ -28,14 +32,17 @@ export default function List({ name, handleDeleteEntireLists }) {
     setError(errorText);
     setShowForm(showStatus);
   }
-
   function AddLists(cardContent) {
     setList([...list, cardContent]);
   }
+
+  // handler: clear/empty all list
   function handleClearAll(e) {
     setError("");
     setList([]);
   }
+
+  // input handlers
   function handleTitleChange(e) {
     e.preventDefault();
     setTitle(e.target.value);
@@ -44,6 +51,8 @@ export default function List({ name, handleDeleteEntireLists }) {
     e.preventDefault();
     setDesc(e.target.value);
   }
+
+  //on click handlers
   function handleSave(e) {
     AddLists({ title, desc, id: counter + 1 });
     setCounter(counter + 1);
