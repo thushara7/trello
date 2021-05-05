@@ -49,6 +49,7 @@ body {
   border: none;
   background-color: white;
   color: #3a7883;
+  cursor: pointer;
 }
 .cardItem {
   padding: 10px;
@@ -78,13 +79,31 @@ body {
 
 .saveButton {
   border: 1px solid #3a7883;
-
   background-color: #3a7883;
   font-size: 12px;
   color: white;
   cursor: pointer;
 }
 
+.addListButton {
+  border: 1px solid #3a7883;
+  background-color: #3a7883;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  float: right;
+  margin: 5px 30px;
+  padding: 15px;
+  width: 15%;
+}
+
 .errorText {
   color: coral;
+}
+
+.addListContents {
+  background-color: rgb(217, 235, 233);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #3a7883;
 }

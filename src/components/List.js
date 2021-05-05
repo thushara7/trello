@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./card";
 
-export default function List({ name }) {
+export default function List({ name, handleDeleteEntireLists }) {
   const localStorageKey = name;
   const [list, setList] = useState(
     JSON.parse(localStorage.getItem(localStorageKey) || "[]")
@@ -63,6 +63,14 @@ export default function List({ name }) {
         <button className="addButton" onClick={handleAddLists}>
           {" "}
           Add {name}
+        </button>
+        <button
+          className="addButton"
+          name={name}
+          onClick={handleDeleteEntireLists}
+        >
+          {" "}
+          Delete {name}
         </button>
         <span
           style={{
