@@ -56,6 +56,11 @@ export default function List({ name, handleDeleteEntireLists }) {
     const newList = list.filter(el => el.title !== e.target.value);
     setList([...newList]);
   }
+  function handleCancle() {
+    setShowForm(false);
+    setTitle("");
+    setDesc("");
+  }
   return (
     <div className="card">
       <div className="cardHeader">
@@ -108,12 +113,15 @@ export default function List({ name, handleDeleteEntireLists }) {
           <div>
             <button
               style={{ margin: "0px 10px 0px 0px" }}
-              className="saveButton"
+              className={
+                title !== "" && desc !== "" ? "saveButton" : "disabledButton"
+              }
               onClick={handleSave}
+              disabled={!title || !desc}
             >
               Save {name}
             </button>
-            <button className="saveButton" onClick={() => setShowForm(false)}>
+            <button className="saveButton" onClick={handleCancle}>
               Cancel
             </button>
           </div>
